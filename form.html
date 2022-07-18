@@ -1,0 +1,19 @@
+<form id="frmAnggota" method="post">
+ No Anggota:<br>
+ <input type="text" id="txtNo" name="txtNo"><br>
+ Nama Anggota:<br>
+ <input type="text" id="txtNama" name="txtNama"><br>
+ <input type="submit" name="actSimpan" value="Simpan Data">
+</form>
+<script>
+$(function() {
+ $("#frmAnggota").on("submit", function() {
+ $.post("simpan.php", $(this).serialize(), function(data, status) {
+ $("#message").fadeOut("fast", function() {
+ $(this).html(data.message).fadeIn("fast");
+ });
+ }, "json");
+ return false;
+ });
+});
+</script>
